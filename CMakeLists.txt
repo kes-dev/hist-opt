@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.10)
+project(optimisation)
+
+set(CMAKE_CXX_STANDARD 14)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+add_executable(optimisation src/main.cpp src/histogram.cpp src/histogram.h)
+target_link_libraries(optimisation Threads::Threads)
+
+IF(CMAKE_BUILD_TYPE MATCHES Debug)
+    message("Debug build")
+ELSEIF(CMAKE_BUILD_TYPE MATCHES Release)
+    message("Release build")
+    target_compile_options (optimisation PRIVATE -march=native)
+ELSE()
+    message("Some other build type.")
+ENDIF()
