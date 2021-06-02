@@ -107,6 +107,7 @@ int main(int argc, char** argv) {
     long testStartTimeEpoch = std::chrono::duration_cast<std::chrono::seconds>(testStartTime.time_since_epoch()).count();
     long testEndTimeEpoch = std::chrono::duration_cast<std::chrono::seconds>(testEndTime.time_since_epoch()).count();
     long finishInitTimeEpoch = std::chrono::duration_cast<std::chrono::seconds>(finishInitTime.time_since_epoch()).count();
+
     std::cout << "Test duration: " << (testEndTimeEpoch - testStartTimeEpoch) << " s" << std::endl;
     std::cout << "Preparation duration: " << (finishInitTimeEpoch - testStartTimeEpoch) << " s" << std::endl;
     std::cout << "Running duration: " << (testEndTimeEpoch - finishInitTimeEpoch) << " s" << std::endl;

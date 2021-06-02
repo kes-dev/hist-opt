@@ -8,6 +8,7 @@
 #include "histogram.h"
 
 Histogram::Histogram() : endThread(false) {
+
 }
 
 Histogram::~Histogram() {
@@ -71,6 +72,7 @@ int Histogram::uninit() {
         case SINGLE_16_PER_LOOP:
         case MULTI_NAIVE:
             // nothing to uninit()
+            delete[] histResult;
             break;
         case MULTI_SIMPLE:
             uninitMultiSimple();
@@ -81,7 +83,6 @@ int Histogram::uninit() {
 
     }
 
-    delete[] histResult;
     return 0;
 }
 
@@ -322,7 +323,6 @@ void Histogram::calcMultiNaive(uint16_t* const imgSrc) {
         histResult[channel] = channelHist;
     }
     delete[] threads;
-    delete[] histResult;
 }
 
 void Histogram::initMultiSimple() {
